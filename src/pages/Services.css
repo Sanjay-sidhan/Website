@@ -1,0 +1,542 @@
+/* Using global variables from index.css */
+
+/* ======================================
+   BASE PAGE
+====================================== */
+
+.services-page {
+  overflow-x: hidden;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Subtle background glow for depth */
+.services-page::before {
+  content: "";
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(circle, var(--primary-soft), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ======================================
+   HERO SECTION
+====================================== */
+
+.services-hero {
+  min-height: 45vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5rem 1rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.services-header-content h1 {
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.services-header-content p {
+  font-size: 1.1rem;
+  max-width: 720px;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ======================================
+   FLAGSHIP SECTION
+====================================== */
+
+.flagship-container {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+  position: relative;
+  z-index: 1;
+}
+
+.flagship-row {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5rem;
+  align-items: center;
+  transition: transform 0.4s ease;
+}
+
+.flagship-row:hover {
+  transform: translateY(-8px);
+}
+
+.flagship-row.reverse {
+  grid-template-columns: 1.2fr 1fr;
+}
+
+.flagship-row.reverse .flagship-text {
+  order: 2;
+}
+
+.flagship-row.reverse .flagship-image-wrapper {
+  order: 1;
+}
+
+/* Badge */
+
+.service-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  margin-bottom: 1.2rem;
+}
+
+/* Title */
+
+.flagship-text h2 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+/* Description */
+
+.flagship-text p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+/* Ideal */
+
+.ideal-for {
+  font-size: 0.95rem;
+  color: #c2c2c2;
+  margin-bottom: 1.5rem;
+}
+
+/* Features */
+
+.service-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 2rem;
+}
+
+.service-features-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+/* Tech Stack */
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.tech-stack span {
+  font-size: 0.75rem;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  border: 1px solid rgba(255, 77, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.tech-stack span:hover {
+  background: var(--primary);
+  color: #000;
+}
+
+/* Image */
+
+.flagship-image-wrapper {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+.flagship-image {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.flagship-image-wrapper:hover .flagship-image {
+  transform: scale(1.08);
+}
+
+.image-overlay-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center,
+      transparent 40%,
+      rgba(255, 77, 0, 0.08));
+}
+
+/* ======================================
+   SECONDARY SERVICES
+====================================== */
+
+.secondary-services {
+  padding: 8rem 1rem 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+.service-card-premium {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 2.5rem;
+  border-radius: 24px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  text-align: center;
+  transition: all 0.35s ease;
+}
+
+.service-card-premium:hover {
+  transform: translateY(-12px);
+  border-color: var(--primary);
+  box-shadow: 0 30px 80px var(--primary-glow);
+}
+
+.service-icon-glow {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 14px var(--primary-glow));
+}
+
+.service-card-premium h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.service-card-premium p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.service-card-premium ul {
+  margin-top: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.service-card-premium ul li {
+  font-size: 0.85rem;
+  color: #aaaaaa;
+  margin-bottom: 6px;
+}
+
+/* ======================================
+   PROCESS SECTION (UPGRADED)
+====================================== */
+
+.process-preview {
+  padding: 1rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.process-preview h2 {
+  font-size: 2.2rem;
+  margin-bottom: 4rem;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+/* Card-based process layout */
+
+.process-steps {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.process-step-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2.3rem;
+  border-radius: 20px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.process-step-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 60px var(--primary-glow);
+}
+
+.process-number {
+  background: var(--primary);
+  color: #000;
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  min-width: 45px;
+  text-align: center;
+}
+
+.process-step-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.process-step-card p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ======================================
+   3D SKILLS SECTION
+====================================== */
+
+.section-header-centered {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header-centered h2 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin-top: 0.6rem;
+  color: var(--text-primary);
+}
+
+.section-sub {
+  margin-top: 0.8rem;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.skills-3d-section {
+  padding: 1rem 0 6rem;
+}
+
+.skills-3d-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1.5rem;
+  perspective: 1000px;
+  padding: 2rem 0;
+}
+
+.skill-3d-card {
+  position: relative;
+  height: 160px;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.skill-3d-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 2;
+}
+
+.skill-logo-wrapper {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--skill-color) 40%, transparent));
+  transition: transform 0.3s ease;
+}
+
+.skill-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.skill-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.skill-3d-card:hover {
+  border-color: var(--skill-color);
+  box-shadow:
+    0 15px 35px color-mix(in srgb, var(--skill-color) 20%, transparent),
+    0 0 15px color-mix(in srgb, var(--skill-color) 15%, transparent);
+}
+
+.skill-3d-card:hover .skill-logo-wrapper {
+  transform: translateZ(30px);
+}
+
+.skill-3d-card:hover .skill-name {
+  transform: translateZ(20px);
+  color: var(--skill-color);
+}
+
+.skill-3d-shadow {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 10px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.5), transparent);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.skill-3d-card:hover .skill-3d-shadow {
+  opacity: 1;
+}
+
+/* ======================================
+   FINAL CTA
+====================================== */
+
+.final-cta {
+  margin: 8rem 0;
+  padding: 1rem;
+  text-align: center;
+}
+
+.final-cta h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.final-cta p {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 12px 30px;
+  background: var(--primary);
+  color: #000;
+  font-weight: 600;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(255, 51, 0, 0.2);
+}
+
+/* ======================================
+   RESPONSIVE
+====================================== */
+
+@media (max-width: 1024px) {
+
+  .flagship-row,
+  .flagship-row.reverse {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .flagship-row.reverse .flagship-text,
+  .flagship-row.reverse .flagship-image-wrapper {
+    order: unset;
+  }
+
+  .service-features-list li {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-header-content h1 {
+    font-size: 2.4rem;
+  }
+
+  .flagship-text h2 {
+    font-size: 1.8rem;
+  }
+
+  .flagship-image {
+    height: 350px;
+  }
+
+  .process-step-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .final-cta h2 {
+    font-size: 1.6rem;
+  }
+}

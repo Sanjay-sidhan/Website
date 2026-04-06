@@ -1,0 +1,257 @@
+.solar-skills-section {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    background: rgba(255, 255, 255, 0.55); /* Semi-transparent so water shows through */
+    padding: 2.5rem 0;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.solar-flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+}
+
+.solar-content-left {
+    flex: 1;
+    max-width: 500px;
+}
+
+.solar-content-left h2 {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin: 1.5rem 0;
+    color: var(--text-primary);
+}
+
+.solar-content-left p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+}
+
+.tech-stats-summary {
+    display: flex;
+    gap: 3rem;
+}
+
+.tech-stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-num {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.solar-visual-right {
+    flex: 1.2;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.solar-system {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ──────────────────────────────────────────────────────────
+   ORBITS
+   ────────────────────────────────────────────────────────── */
+
+.orbit {
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; /* Crucial: Let clicks pass through the orbit container */
+}
+
+.orbit-path {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 50%;
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.01);
+}
+
+.orbit-rotation {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Reduced size for side-by-side but with larger gap for big icons */
+/* Spacing adjusted for professional look and larger icons */
+.orbit-1 { width: 220px; height: 220px; }
+.orbit-2 { width: 380px; height: 380px; }
+.orbit-3 { width: 540px; height: 540px; }
+
+/* Rotation Animations */
+@keyframes rotateOrbit {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes rotateIcon {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+}
+
+.rotator-fast { animation: rotateOrbit 25s linear infinite; }
+.rotator-medium { animation: rotateOrbit 50s linear infinite; }
+.rotator-slow { animation: rotateOrbit 80s linear infinite; }
+
+/* REVERSE rotations for icons to stay upright */
+.rotator-fast-reverse { animation: rotateIcon 25s linear infinite; }
+.rotator-medium-reverse { animation: rotateIcon 50s linear infinite; }
+.rotator-slow-reverse { animation: rotateIcon 80s linear infinite; }
+
+/* ──────────────────────────────────────────────────────────
+   ICONS
+   ────────────────────────────────────────────────────────── */
+
+.orbit-icon-wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: -30px;
+    /* Move to orbit edge based on rotation angle */
+    /* Fixed: Double rotation ensures icon starts upright AND stays upright */
+    transform: rotate(var(--rotation-angle)) translate(calc(var(--orbit-radius) / 2)) rotate(calc(-1 * var(--rotation-angle)));
+    pointer-events: auto; /* Important: Enable clicks on the icons specifically */
+}
+
+.orbit-1 .orbit-icon-wrapper { --orbit-radius: 220px; }
+.orbit-2 .orbit-icon-wrapper { --orbit-radius: 380px; }
+.orbit-3 .orbit-icon-wrapper { --orbit-radius: 540px; }
+
+.icon-sphere-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-sphere {
+    width: 54px;
+    height: 54px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+}
+
+.tech-icon-img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.icon-glow {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    opacity: 0.1;
+    filter: blur(10px);
+    z-index: -1;
+}
+
+.icon-sphere-container:hover .icon-sphere {
+    border-color: var(--icon-color);
+    box-shadow: 0 0 25px var(--icon-color);
+    transform: scale(1.2);
+}
+
+/* Tooltip removed as per user request (hover effect only) */
+
+/* ──────────────────────────────────────────────────────────
+   CORE
+   ────────────────────────────────────────────────────────── */
+
+.solar-core {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    cursor: pointer;
+    color: var(--text-primary);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.core-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.1;
+    font-weight: 800;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+}
+
+.core-inner span:last-child {
+    font-size: 1.1rem;
+    margin-top: 2px;
+}
+
+@media (max-width: 1024px) {
+    .solar-flex-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .solar-content-left {
+        max-width: 100%;
+        margin-bottom: 2rem;
+    }
+    .tech-stats-summary {
+        justify-content: center;
+    }
+    .solar-visual-right {
+        width: 100%;
+        height: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .solar-visual-right { transform: scale(0.6); height: 400px; }
+}
