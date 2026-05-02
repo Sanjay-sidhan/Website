@@ -1,19 +1,15 @@
-.ripple-container {
+.ripple-host {
     position: relative;
-    overflow: hidden;
-    display: inline-flex;
-    /* ensure button shape is respected */
-    width: auto;
-    height: auto;
-    cursor: pointer;
-    border-radius: inherit; /* inherit parent's border radius (if any) */
+    /* ensure the element remains clickable and interactive */
 }
 
-/* Ensure the button within is displayed correctly */
-.ripple-container button,
-.ripple-container a {
-    position: relative;
-    z-index: 1;
+.ripple-overlay {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 0;
 }
 
 .ripple-circle {

@@ -21,11 +21,12 @@
 }
 
 .solar-content-left h2 {
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
-    font-weight: 900;
+    font-size: clamp(2rem, 4.5vw, 2.8rem);
+    font-weight: 800; /* Reduced from 900 to match vision */
     line-height: 1.1;
-    margin: 1.5rem 0;
+    margin: 1rem 0 1.5rem;
     color: var(--text-primary);
+    letter-spacing: -0.02em;
 }
 
 .solar-content-left p {

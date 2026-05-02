@@ -29,7 +29,7 @@ const Footer = () => {
                         <h4>Quick Links</h4>
                         <ul>
                             {NAV_LINKS.map(link => (
-                                <li key={link.name}><a href={link.path}>{link.name}</a></li>
+                                <li key={link.name}><Link to={link.path}>{link.name}</Link></li>
                             ))}
                         </ul>
                     </div>

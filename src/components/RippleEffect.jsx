@@ -30,26 +30,36 @@ const RippleEffect = ({ children }) => {
         }
     }, [ripples]);
 
-    return (
-        <span 
-            className="ripple-container" 
-            onMouseDown={createRipple}
-        >
-            {children}
-            {ripples.map((ripple) => (
-                <span
-                    key={ripple.id}
-                    className="ripple-circle"
-                    style={{
-                        top: ripple.y,
-                        left: ripple.x,
-                        width: ripple.size,
-                        height: ripple.size
-                    }}
-                />
-            ))}
-        </span>
-    );
+    const child = React.Children.only(children);
+
+    return React.cloneElement(child, {
+        onMouseDown: (e) => {
+            createRipple(e);
+            if (child.props.onMouseDown) {
+                child.props.onMouseDown(e);
+            }
+        },
+        className: `${child.props.className || ''} ripple-host`.trim(),
+        children: (
+            <>
+                {child.props.children}
+                <span className="ripple-overlay">
+                    {ripples.map((ripple) => (
+                        <span
+                            key={ripple.id}
+                            className="ripple-circle"
+                            style={{
+                                top: ripple.y,
+                                left: ripple.x,
+                                width: ripple.size,
+                                height: ripple.size
+                            }}
+                        />
+                    ))}
+                </span>
+            </>
+        )
+    });
 };
 
 export default RippleEffect;

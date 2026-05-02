@@ -68,7 +68,7 @@ const SolarSkills = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         style={{ justifyContent: 'flex-start' }}
                     >
-                        <span className="hero-badge"><span className="live-dot"></span>Technical Expertise</span>
+                        <span className="badge"><span className="badge-dot"></span>Technical Expertise</span>
                     </motion.div>
                     <motion.h2
                         initial={{ opacity: 0, x: -20 }}

@@ -1,19 +1,19 @@
 .about-page {
     padding-top: 2.5rem;
-    padding-bottom: 8.5rem;
+    padding-bottom: 3.5rem; /* Reduced from 8.5rem to close footer gap */
     position: relative;
     overflow: hidden;
 }
 
 .about-header {
     text-align: center;
-    margin-bottom: 6rem;
+    margin-bottom: 4rem;
 }
 
 .about-mission {
     max-width: 900px;
     /* control width */
-    margin: 4rem auto 6rem;
+    margin: 3rem auto 4rem;
     /* reduce vertical spacing */
     padding: 3rem 3.5rem;
     /* reduce padding */
@@ -38,502 +38,9 @@
     line-height: 1.7;
 }
 
-/* Vision Section */
-
-.vision-content h2 {
-    font-size: 2.2rem;
-    margin-bottom: 1.2rem;
-    letter-spacing: -0.01em;
-}
-
-.vision-content p {
-    max-width: 650px;
-    margin: 0 auto;
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
-}
-
-.process-section {
-    padding: 2rem 0 1rem;
-    /* top | sides | bottom */
-}
-
-/* Vertical Timeline */
-.vertical-timeline {
-    position: relative;
-    max-width: 1000px;
-    margin: 2rem auto 1rem;
-    padding: 1rem 0;
-}
-
-.center-line {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, transparent, var(--primary), transparent);
-    transform: translateX(-50%);
-    box-shadow: 0 0 15px var(--primary);
-}
-
-.timeline-item {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 50%;
-    position: relative;
-    margin-bottom: 4rem;
-    width: 100%;
-}
-
-.timeline-item.right {
-    justify-content: flex-start;
-    padding-right: 0;
-    padding-left: 50%;
-}
-
-.timeline-content {
-    width: 85%;
-    padding: 2.5rem;
-    position: relative;
-    display: flex;
-    gap: 1.8rem;
-    align-items: center;
-    transition: all 0.4s ease;
-}
-
-.timeline-content:hover {
-    transform: translateY(-5px) scale(1.02);
-    border-color: var(--primary);
-    box-shadow: 0 15px 35px rgba(216, 67, 21, 0.1);
-}
-
-.timeline-item.left .timeline-content {
-    margin-right: 3rem;
-}
-
-.timeline-item.right .timeline-content {
-    margin-left: 3rem;
-}
-
-.timeline-dot {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: var(--bg-primary);
-    border: 3px solid var(--primary);
-    border-radius: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-    box-shadow: 0 0 15px var(--primary);
-    z-index: 2;
-}
-
-.timeline-item.left .timeline-dot {
-    right: -4rem;
-}
-
-.timeline-item.right .timeline-dot {
-    left: -4rem;
-}
-
-.timeline-icon-box {
-    background: rgba(216, 67, 21, 0.1);
-    border: 1px solid var(--primary);
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 16px;
-    flex-shrink: 0;
-}
-
-.timeline-icon-box .icon {
-    color: var(--primary);
-}
-
-.timeline-text h3 {
-    font-size: 1.6rem;
-    margin-bottom: 0.6rem;
-    color: var(--text-primary);
-}
-
-.timeline-text p {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-    .about-mission {
-        padding: 3rem 2rem;
-    }
-
-    .center-line {
-        left: 20px;
-    }
-
-    .timeline-item,
-    .timeline-item.right {
-        padding-left: 60px;
-        padding-right: 0;
-        justify-content: flex-start;
-        margin-bottom: 3rem;
-    }
-
-    .timeline-dot {
-        animation: pulse 2.5s infinite ease-in-out;
-    }
-
-    @keyframes pulse {
-        0% {
-            box-shadow: 0 0 5px rgba(255, 77, 0, 0.4);
-        }
-
-        50% {
-            box-shadow: 0 0 20px rgba(255, 77, 0, 0.8);
-        }
-
-        100% {
-            box-shadow: 0 0 5px rgba(255, 77, 0, 0.4);
-        }
-    }
-
-    .timeline-content {
-        width: 100%;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        padding: 2rem;
-    }
-
-    .timeline-dot {
-        left: -50px !important;
-    }
-}
-
-/* CTA Section */
-.about-cta {
-    padding: 2.5rem 0 3rem;
-    text-align: center;
-    position: relative;
-    margin-bottom: 0;
-}
-
-.about-cta::after {
-    display: none;
-}
-
-.cta-content h2 {
-    font-size: 2.2rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.02em;
-}
-
-.cta-content p {
-    max-width: 650px;
-    margin: 0 auto 3rem;
-    font-size: 1rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
-}
-
-.cta-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-}
-
-/* Subtle background glow */
-.about-cta::before {
-    content: "";
-    position: absolute;
-    width: 600px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(255, 77, 0, 0.15), transparent 70%);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    filter: blur(80px);
-    z-index: -1;
-}
-
-/* ── Shared Section Wrapper ──────────────────────────────── */
-.about-section {
-    padding: 3rem 0 2rem;
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.section-header h2 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-top: 0.6rem;
-    letter-spacing: -0.02em;
-}
-
-.section-sub {
-    margin-top: 0.6rem;
-    font-size: 0.97rem;
-    color: var(--text-secondary);
-    max-width: 520px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
-}
-
-/* ── Core Values Grid ────────────────────────────────────── */
-.values-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.8rem;
-}
-
-.value-card {
-    padding: 2.5rem 2rem;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.value-card:hover {
-    box-shadow: 0 12px 30px rgba(216, 67, 21, 0.12);
-}
-
-.value-icon-box {
-    width: 56px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(216, 67, 21, 0.1);
-    border: 1px solid var(--primary);
-    border-radius: 14px;
-    flex-shrink: 0;
-}
-
-.value-icon {
-    color: var(--primary);
-}
-
-.value-card h3 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin: 0;
-}
-
-.value-card p {
-    font-size: 0.975rem;
-    color: var(--text-secondary);
-    line-height: 1.65;
-    margin: 0;
-}
-
-/* ── Work Culture Grid ───────────────────────────────────── */
-.culture-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.6rem;
-}
-
-.culture-card {
-    padding: 2rem 2rem;
-    border-radius: 20px;
-    display: flex;
-    gap: 1.5rem;
-    align-items: flex-start;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.culture-card:hover {
-    border-color: var(--primary);
-    box-shadow: 0 10px 28px rgba(216, 67, 21, 0.1);
-}
-
-.culture-emoji {
-    font-size: 2.2rem;
-    line-height: 1;
-    flex-shrink: 0;
-    margin-top: 2px;
-}
-
-.culture-card h3 {
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin: 0 0 0.5rem;
-}
-
-.culture-card p {
-    font-size: 0.96rem;
-    color: var(--text-secondary);
-    line-height: 1.65;
-    margin: 0;
-}
-
-/* ── Technology Mindset Tag Cloud ────────────────────────── */
-.tech-mindset-section {
-    text-align: center;
-}
-
-.tech-mindset-desc {
-    max-width: 640px;
-    margin: 0 auto 2.5rem;
-    font-size: 1.05rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
-}
-
-.tech-tags-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-}
-
-.tech-tag {
-    display: inline-block;
-    padding: 0.55rem 1.3rem;
-    border-radius: 999px;
-    font-size: 0.92rem;
-    font-weight: 600;
-    background: color-mix(in srgb, var(--tag-color) 12%, transparent);
-    border: 1px solid color-mix(in srgb, var(--tag-color) 50%, transparent);
-    color: var(--tag-color);
-    cursor: default;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-}
-
-.tech-tag:hover {
-    background: color-mix(in srgb, var(--tag-color) 22%, transparent);
-    box-shadow: 0 0 14px color-mix(in srgb, var(--tag-color) 35%, transparent);
-}
-
-/* ── Long-Term Goals — Vision Timeline Redesign ──────────── */
-.vision-timeline-container {
-    position: relative;
-    max-width: 900px;
-    margin: 3rem auto 2rem;
-    padding: 2rem 0;
-}
-
-.vision-connecting-line {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, transparent, rgba(234, 88, 12, 0.5), transparent);
-    transform: translateX(-50%);
-    box-shadow: 0 0 10px rgba(234, 88, 12, 0.2);
-}
-
-.vision-timeline-item {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 50%;
-    position: relative;
-    margin-bottom: 3.5rem;
-    width: 100%;
-}
-
-.vision-timeline-item.vision-right {
-    justify-content: flex-start;
-    padding-right: 0;
-    padding-left: 50%;
-}
-
-.vision-timeline-card {
-    width: 85%;
-    padding: 2.2rem 2rem;
-    position: relative;
-    border-radius: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
-}
-
-.vision-timeline-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(234, 88, 12, 0.5);
-    box-shadow: 0 15px 35px rgba(234, 88, 12, 0.1);
-}
-
-.vision-timeline-item.vision-left .vision-timeline-card {
-    margin-right: 3rem;
-}
-
-.vision-timeline-item.vision-right .vision-timeline-card {
-    margin-left: 3rem;
-}
-
-.vision-timeline-dot {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
-    background: rgba(234, 88, 12, 1);
-}
-
-.vision-timeline-item.vision-left .vision-timeline-dot {
-    right: -2.8rem;
-}
-
-.vision-timeline-item.vision-right .vision-timeline-dot {
-    left: -2.8rem;
-}
-
-.vision-year-badge {
-    font-size: 0.85rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: -0.5rem;
-}
-
-.vision-icon-ring {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 14px;
-    background: rgba(255,255,255,0.02);
-    border: 1px solid transparent;
-}
-
-.vision-timeline-title {
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin: 0;
-    color: var(--text-primary);
-    line-height: 1.3;
-}
-
-.vision-timeline-desc {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin: 0;
-}
-
 /* ── Company Summary ─────────────────────────────────────── */
 .company-summary-section {
-    padding: 2rem 0 1rem;
+    padding: 4rem 0;
 }
 
 .company-summary-inner {
@@ -547,7 +54,6 @@
 
 .company-summary-text .badge {
     margin-bottom: 1rem;
-    display: inline-block;
 }
 
 .company-summary-text h2 {
@@ -647,50 +153,477 @@
 }
 
 
-@media (max-width: 900px) {
-    .company-summary-inner {
-        grid-template-columns: 1fr;
-        padding: 2rem 1.8rem;
-        gap: 2.5rem;
-    }
+/* ── Shared Section Wrapper ──────────────────────────────── */
+.about-section {
+    padding: 4rem 0;
+}
 
-    .company-stats-grid {
-        grid-template-columns: repeat(3, 1fr);
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-top: 0.6rem;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+}
+
+/* ── Core Values Redesign (Premium & Advanced) ───────────── */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    perspective: 1000px;
+}
+
+.value-card {
+    position: relative;
+    padding: 3.5rem 3rem;
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.value-card:hover {
+    transform: translateY(-10px) rotateX(2deg) rotateY(-2deg);
+    border-color: rgba(255, 77, 0, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+}
+
+.card-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 77, 0, 0.08) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.value-card:hover .card-glow {
+    opacity: 1;
+}
+
+.value-icon-box {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 77, 0, 0.08);
+    border: 1px solid rgba(255, 77, 0, 0.3);
+    border-radius: 20px;
+    position: relative;
+    z-index: 1;
+    transition: all 0.4s ease;
+}
+
+.value-card:hover .value-icon-box {
+    transform: scale(1.1) rotate(5deg);
+    background: var(--primary);
+}
+
+.value-icon {
+    color: var(--primary);
+    transition: color 0.4s ease;
+}
+
+.value-card:hover .value-icon {
+    color: white;
+}
+
+.value-card h3 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0;
+    z-index: 1;
+}
+
+.value-card p {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+    z-index: 1;
+}
+
+/* ── Work Culture Grid (Premium Redesign) ────────────────── */
+.culture-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.8rem;
+    perspective: 1200px;
+    margin-top: 2rem;
+}
+
+.culture-card {
+    position: relative;
+    padding: 3rem 2.2rem;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    overflow: hidden;
+}
+
+.culture-card:hover {
+    border-color: rgba(255, 77, 0, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+}
+
+.card-sheen {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.05),
+        transparent
+    );
+    transition: none;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.culture-card:hover .card-sheen {
+    animation: sheen 1s forwards;
+}
+
+@keyframes sheen {
+    100% {
+        left: 100%;
     }
+}
+
+.culture-glow {
+    position: absolute;
+    inset: -50%;
+    background: radial-gradient(circle, rgba(255, 77, 0, 0.08) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.culture-card:hover .culture-glow {
+    opacity: 1;
+}
+
+.culture-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 77, 0, 0.08);
+    border-radius: 18px;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 77, 0, 0.2);
+}
+
+.culture-card:hover .culture-icon-wrapper {
+    background: var(--primary);
+    box-shadow: 0 0 20px rgba(255, 77, 0, 0.3);
+}
+
+.culture-icon {
+    color: var(--primary);
+    transition: all 0.4s ease;
+}
+
+.culture-card:hover .culture-icon {
+    color: white;
+}
+
+.culture-text {
+    position: relative;
+    z-index: 2;
+}
+
+.culture-card h3 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+    color: var(--text-primary);
+}
+
+.culture-card p {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+/* ── Technology Mindset Tag Cloud ────────────────────────── */
+.tech-mindset-section {
+    text-align: center;
+}
+
+.tech-mindset-desc {
+    max-width: 640px;
+    margin: 0 auto 3rem;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.tech-tags-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.tech-tag {
+    padding: 0.6rem 1.4rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    background: color-mix(in srgb, var(--tag-color) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--tag-color) 30%, transparent);
+    color: var(--tag-color);
+    transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+    transform: translateY(-3px) scale(1.05);
+    background: var(--tag-color);
+    color: white;
+    box-shadow: 0 10px 20px color-mix(in srgb, var(--tag-color) 25%, transparent);
+}
+
+/* ── Process Implementation (Advanced Layout) ────────────── */
+.process-section {
+    padding: 4rem 0;
+    position: relative;
+}
+
+.process-intro {
+    max-width: 500px;
+    margin: 0.8rem auto 0;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.process-path-container {
+    position: relative;
+    max-width: 1100px;
+    margin: 4rem auto 0;
+    padding: 0 1rem;
+}
+
+.process-line-path {
+    position: absolute;
+    top: 40px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--primary), transparent);
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.process-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.process-card-modern {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+}
+
+.process-step-indicator {
+    position: relative;
+    z-index: 2;
+}
+
+.step-number {
+    width: 80px;
+    height: 80px;
+    background: var(--bg-primary);
+    border: 1px solid var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    box-shadow: 0 10px 25px rgba(255, 77, 0, 0.1);
+    transition: all 0.4s ease;
+}
+
+.step-glow {
+    position: absolute;
+    inset: -10px;
+    background: radial-gradient(circle, rgba(255, 77, 0, 0.2), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.process-card-modern:hover .step-number {
+    background: var(--primary);
+    color: white;
+    transform: scale(1.1);
+}
+
+.process-card-modern:hover .step-glow {
+    opacity: 1;
+}
+
+.process-card-content {
+    padding: 2.5rem 1.8rem;
+    height: 100%;
+}
+
+.process-icon-box {
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+    opacity: 0.8;
+}
+
+.process-card-modern:hover .process-icon-box {
+    animation: bounce 0.5s ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.process-card-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.8rem;
+}
+
+.process-card-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ── CTA Redesign (Integrated Narrative) ─────────────────── */
+.about-cta-final {
+    padding: 4rem 0;
+    position: relative;
+    text-align: center;
+    background: linear-gradient(to bottom, transparent, rgba(255, 77, 0, 0.02) 100%);
+}
+
+.cta-narrative-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-narrative-content .badge {
+    margin-bottom: 1.5rem;
+}
+
+.cta-narrative-content h2 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    margin-bottom: 1.8rem;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+.cta-narrative-content p {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 640px;
+    margin: 0 auto 3.5rem;
+    line-height: 1.8;
+}
+
+.cta-action-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.btn-primary-large {
+    background: var(--primary);
+    color: white;
+    padding: 1.2rem 2.8rem;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(255, 77, 0, 0.2);
+}
+
+.btn-primary-large:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(255, 77, 0, 0.3);
+    background: #f97316;
+}
+
+.link-secondary {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: color 0.3s ease;
+}
+
+.link-secondary span {
+    transition: transform 0.3s ease;
+}
+
+.link-secondary:hover {
+    color: var(--primary);
+}
+
+.link-secondary:hover span {
+    transform: translateX(5px);
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 1100px) {
+    .process-steps-grid { grid-template-columns: repeat(2, 1fr); gap: 4rem; }
+    .process-line-path { display: none; }
+}
+
+@media (max-width: 1024px) {
+    .values-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
-    .vision-timeline-item,
-    .vision-timeline-item.vision-right {
-        padding-left: 60px;
-        padding-right: 0;
-        justify-content: flex-start;
-        margin-bottom: 3rem;
-    }
-
-    .vision-timeline-card {
-        width: 100%;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        padding: 2rem;
-    }
-
-    .vision-timeline-dot {
-        left: -50px !important;
-    }
-
-    .tech-tags-cloud {
-        gap: 0.7rem;
-    }
-
-    .values-grid,
-    .culture-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .company-stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    .cta-narrative-content h2 { font-size: 2.5rem; }
+    .cta-action-group { flex-direction: column; gap: 1.5rem; }
+    .process-steps-grid { grid-template-columns: 1fr; }
+    .company-summary-inner { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; }
 }

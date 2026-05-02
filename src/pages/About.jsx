@@ -4,7 +4,8 @@ import {
     Target, Lightbulb, Code, Rocket,
     Heart, TrendingUp, Shield, Cpu,
     Users, Globe, Star, Layers,
-    Building2
+    Building2, FlaskConical, Compass,
+    Zap
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import RippleEffect from '../components/RippleEffect';
@@ -27,18 +28,13 @@ const coreValues = [
 ];
 
 const workCulture = [
-    { emoji: "🚀", title: "Bias for Action", desc: "We ship fast, iterate faster. Momentum beats perfection at every stage." },
-    { emoji: "🤝", title: "Radical Collaboration", desc: "Silos are our enemy. Cross-functional teams solve problems that specialists miss." },
-    { emoji: "🔬", title: "Curiosity-Driven", desc: "We invest heavily in learning—conferences, labs, hackathons, and dedicated R&D time." },
-    { emoji: "🌱", title: "Growth Mindset", desc: "Failure is a signal, not a verdict. Every setback is a structured learning event." },
+    { icon: Rocket, title: "Bias for Action", desc: "We ship fast, iterate faster. Momentum beats perfection at every stage." },
+    { icon: Users, title: "Radical Collaboration", desc: "Silos are our enemy. Cross-functional teams solve problems that specialists miss." },
+    { icon: FlaskConical, title: "Curiosity-Driven", desc: "We invest heavily in learning—conferences, labs, hackathons, and dedicated R&D time." },
+    { icon: TrendingUp, title: "Growth Mindset", desc: "Failure is a signal, not a verdict. Every setback is a structured learning event." },
 ];
 
-const longTermGoals = [
-    { icon: Globe, year: "2027", goal: "Global Expansion", desc: "Establish Clynero's presence across North America, Europe, and Southeast Asia.", color: "#ea580c" },
-    { icon: Cpu, year: "2028", goal: "AI-Native Platform", desc: "Launch an integrated AI development platform purpose-built for enterprise-grade applications.", color: "#f97316" },
-    { icon: TrendingUp, year: "2029", goal: "100+ Enterprise Partners", desc: "Grow our strategic partnerships and power the technology backbone of 100+ enterprises.", color: "#fb923c" },
-    { icon: Heart, year: "2030", goal: "Impact at Scale", desc: "Create measurable social and economic impact through open-source contributions and education initiatives.", color: "#fdba74" },
-];
+
 
 const techMindset = [
     { tag: "Cloud-Native", color: "#ea580c" },
@@ -68,7 +64,7 @@ const About = () => {
             />
 
             <header className="about-header">
-                <span className="badge">Our Journey</span>
+                <span className="badge"><span className="badge-dot" />Our Journey</span>
                 <h1 className="gradient-text">Engineering Excellence</h1>
                 <p>Since 2026, Clynero has been pioneering digital landscapes for global leaders.</p>
             </header>
@@ -77,7 +73,7 @@ const About = () => {
             <section className="company-summary-section">
                 <div className="company-summary-inner bento-card">
                     <div className="company-summary-text">
-                        <span className="badge">Who We Are</span>
+                        <span className="badge"><span className="badge-dot" />Who We Are</span>
                         <h2>Built by Engineers.<br />Trusted by Leaders.</h2>
                         <p>
                             Clynero is a next-generation technology firm specializing in enterprise software architecture,
@@ -94,9 +90,9 @@ const About = () => {
                             <RippleEffect>
                                 <Link to="/contact" className="btn-primary">Work with Us</Link>
                             </RippleEffect>
-                            <RippleEffect>
-                                <Link to="/services" className="btn-secondary">Our Services</Link>
-                            </RippleEffect>
+                            <Link to="/services" className="link-secondary">
+                                Our Services <span>→</span>
+                            </Link>
                         </div>
                     </div>
                     <div className="company-stats-column">
@@ -138,7 +134,7 @@ const About = () => {
             {/* ── Core Values ─────────────────────────────────── */}
             <section className="about-section">
                 <div className="section-header">
-                    <span className="badge">What We Stand For</span>
+                    <span className="badge"><span className="badge-dot" />What We Stand For</span>
                     <h2>Core Values</h2>
                 </div>
                 <div className="values-grid">
@@ -150,8 +146,8 @@ const About = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: idx * 0.1 }}
-                            whileHover={{ y: -6, borderColor: 'var(--primary)' }}
                         >
+                            <div className="card-glow" />
                             <div className="value-icon-box">
                                 <val.icon size={24} className="value-icon" />
                             </div>
@@ -165,22 +161,31 @@ const About = () => {
             {/* ── Work Culture ─────────────────────────────────── */}
             <section className="about-section">
                 <div className="section-header">
-                    <span className="badge">Life at Clynero</span>
+                    <span className="badge"><span className="badge-dot" />Life at Clynero</span>
                     <h2>Work Culture</h2>
                 </div>
                 <div className="culture-grid">
                     {workCulture.map((item, idx) => (
                         <motion.div
                             key={idx}
-                            className="culture-card bento-card"
-                            initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            className="culture-card glass-card"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: idx * 0.1 }}
-                            whileHover={{ scale: 1.02 }}
+                            transition={{ 
+                                duration: 0.8, 
+                                delay: idx * 0.1,
+                                type: "spring",
+                                stiffness: 400,
+                                damping: 17
+                            }}
                         >
-                            <span className="culture-emoji">{item.emoji}</span>
-                            <div>
+                            <div className="card-sheen" />
+                            <div className="culture-glow" />
+                            <div className="culture-icon-wrapper">
+                                <item.icon size={28} className="culture-icon" />
+                            </div>
+                            <div className="culture-text">
                                 <h3>{item.title}</h3>
                                 <p>{item.desc}</p>
                             </div>
@@ -192,7 +197,7 @@ const About = () => {
             {/* ── Technology Mindset ───────────────────────────── */}
             <section className="about-section tech-mindset-section">
                 <div className="section-header">
-                    <span className="badge">How We Think</span>
+                    <span className="badge"><span className="badge-dot" />How We Think</span>
                     <h2>Technology Mindset</h2>
                 </div>
                 <p className="tech-mindset-desc">
@@ -216,91 +221,74 @@ const About = () => {
                 </div>
             </section>
 
-            {/* ── Long-Term Goals — Vision Timeline ────────────── */}
-            <section className="about-section vision-advanced-section">
-                <div className="section-header">
-                    <span className="badge">The Road Ahead</span>
-                    <h2>Long-Term Vision</h2>
-                    <p className="section-sub">Our roadmap to 2030 — bold, deliberate, and engineered for impact.</p>
-                </div>
-                <div className="vision-timeline-container">
-                    <div className="vision-connecting-line" />
-                    {longTermGoals.map((goal, idx) => (
-                        <motion.div
-                            key={idx}
-                            className={`vision-timeline-item ${idx % 2 === 0 ? 'vision-left' : 'vision-right'}`}
-                            initial={{ opacity: 0, x: idx % 2 === 0 ? -40 : 40 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: idx * 0.1, ease: 'easeOut' }}
-                        >
-                            <div className="vision-timeline-card bento-card">
-                                <div className="vision-year-badge" style={{ color: goal.color }}>{goal.year}</div>
-                                <div className="vision-icon-ring" style={{ borderColor: goal.color, color: goal.color }}>
-                                    <goal.icon size={28} />
-                                </div>
-                                <h3 className="vision-timeline-title">{goal.goal}</h3>
-                                <p className="vision-timeline-desc">{goal.desc}</p>
-                            </div>
-                            <div className="vision-timeline-dot" style={{ backgroundColor: goal.color, boxShadow: `0 0 15px ${goal.color}` }} />
-                        </motion.div>
-                    ))}
-                </div>
-            </section>
+
 
             {/* ── Process ─────────────────────────────────────── */}
             <section className="process-section">
                 <div className="section-header">
-                    <span className="badge">Our Process</span>
-                    <h2>How We Deliver Results</h2>
+                    <span className="badge"><span className="badge-dot" />Strategic Delivery</span>
+                    <h2>The Clynero Path</h2>
+                    <p className="process-intro">A precise, four-stage engineering lifecycle designed for absolute velocity.</p>
                 </div>
 
-                <div className="vertical-timeline">
-                    <div className="center-line"></div>
-                    {steps.map((step, idx) => (
-                        <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: idx * 0.1 }}
-                            className={`timeline-item ${idx % 2 === 0 ? 'left' : 'right'}`}
-                        >
-                            <div className="timeline-content bento-card">
-                                <div className="timeline-icon-box">
-                                    <step.icon className="icon" size={24} />
+                <div className="process-path-container">
+                    <div className="process-line-path" />
+                    <div className="process-steps-grid">
+                        {steps.map((step, idx) => (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.8, delay: idx * 0.15 }}
+                                className="process-card-modern"
+                            >
+                                <div className="process-step-indicator">
+                                    <div className="step-number">0{idx + 1}</div>
+                                    <div className="step-glow" />
                                 </div>
-                                <div className="timeline-text">
+                                <div className="process-card-content bento-card">
+                                    <div className="process-icon-box">
+                                        <step.icon size={26} className="process-icon" />
+                                    </div>
                                     <h3>{step.title}</h3>
                                     <p>{step.desc}</p>
                                 </div>
-                                <div className="timeline-dot"></div>
-                            </div>
-                        </motion.div>
-                    ))}
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
             </section>
 
-            <section className="about-cta">
-                <div className="cta-content container">
-                    <h2>Ready to Engineer What's Next?</h2>
-                    <p>
-                        Let's build scalable, intelligent systems that move your business forward.
-                        We partner with ambitious teams ready to create long-term impact.
-                    </p>
 
-                    <div className="cta-buttons">
-                        <RippleEffect>
-                            <Link to="/contact" className="btn-primary">
-                                Start a Conversation
+
+            <section className="about-cta-final">
+                <div className="container">
+                    <motion.div 
+                        className="cta-narrative-content"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <span className="badge"><span className="badge-dot" />Get Started</span>
+                        <h2>Ready to Engineer What's Next?</h2>
+                        <p>
+                            Let's build scalable, intelligent systems that move your business forward.
+                            We partner with ambitious teams ready to create long-term impact.
+                        </p>
+
+                        <div className="cta-action-group">
+                            <RippleEffect>
+                                <Link to="/contact" className="btn-primary-large">
+                                    Start a Conversation
+                                </Link>
+                            </RippleEffect>
+                            <Link to="/services" className="link-secondary">
+                                Explore Our Solutions <span>→</span>
                             </Link>
-                        </RippleEffect>
-                        <RippleEffect>
-                            <Link to="/services" className="btn-secondary">
-                                Explore Our Solutions
-                            </Link>
-                        </RippleEffect>
-                    </div>
+                        </div>
+                    </motion.div>
                 </div>
             </section>
         </div>

@@ -1,4 +1,3 @@
-import ExperienceTimeline from '../components/ExperienceTimeline';
 import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -52,7 +51,6 @@ const Experience = () => {
                     </RippleEffect>
                 </motion.div>
             </div>
-            {/* <ExperienceTimeline /> */}
         </div>
     );
 };

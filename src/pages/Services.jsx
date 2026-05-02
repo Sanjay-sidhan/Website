@@ -16,8 +16,8 @@ import {
 import SEO from "../components/SEO";
 import InteractiveCard from "../components/InteractiveCard";
 import RippleEffect from "../components/RippleEffect";
+import ServicesCarousel from "../components/ServicesCarousel";
 import "./Services.css";
-
 /* ==============================
    FLAGSHIP SERVICES
 ================================ */
@@ -119,6 +119,45 @@ const faqs = [
     }
 ];
 
+
+/* ==============================
+   FAQ ITEM COMPONENT
+================================ */
+
+const FAQItem = ({ faq, idx }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  return (
+    <motion.div
+      className={`faq-card ${isOpen ? 'active' : ''}`}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: idx * 0.1 }}
+    >
+      <button className="faq-question" onClick={() => setIsOpen(!isOpen)}>
+        <span className="faq-num">{String(idx + 1).padStart(2, '0')}</span>
+        <span className="faq-q-text">{faq.q}</span>
+        <span className={`faq-toggle ${isOpen ? 'open' : ''}`}>
+          {isOpen ? <Minus size={18} /> : <Plus size={18} />}
+        </span>
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="faq-answer"
+          >
+            <p>{faq.a}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+};
+
 const Services = () => {
   return (
     <div className="services-page">
@@ -129,103 +168,51 @@ const Services = () => {
 
       {/* ================= HERO ================= */}
 
-      <header className="services-hero">
-        <div className="services-header-content">
-          <h1>Scalable Digital Systems Built for Growth</h1>
-          <p>
-            We design and engineer high-performance web, mobile, and AI-driven
-            platforms built for scalability, security, and real-world impact.
-          </p>
+      {/* ================= HERO CAROUSEL ================= */}
+      <div className="section-header-centered" style={{ marginTop: "4rem", marginBottom: "2rem" }}>
+          <span className="badge" style={{ marginBottom: "1rem" }}><span className="badge-dot" />Flagship Solutions</span>
+          <h2>Premium Services</h2>
+          <p className="section-sub">Explore our flagship solutions designed for the modern enterprise.</p>
+      </div>
+      <ServicesCarousel />
+
+      {/* ================= SECONDARY (BENTO GRID - SERVICE BOXES) ================= */}
+
+      <section className="secondary-services-glass container">
+        <div className="section-header-centered">
+          <span className="badge" style={{ marginBottom: "1rem" }}><span className="badge-dot" />Capabilities</span>
+          <h2>Our Core Services</h2>
+          <p className="section-sub">Comprehensive technical solutions designed for modern enterprises and high-growth startups.</p>
         </div>
-      </header>
-
-
-      {/* ================= FLAGSHIP ================= */}
-
-      <section className="flagship-container container">
-        {flagshipServices.map((service, index) => (
-          <div
-            key={service.id}
-            className={`flagship-row ${index % 2 !== 0 ? "reverse" : ""}`}
-          >
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="flagship-text"
-            >
-              <span className="service-tag">{service.tag}</span>
-
-              <h2>{service.title}</h2>
-
-              <p>{service.description}</p>
-
-              <p className="ideal-for">{service.idealFor}</p>
-
-              <ul className="service-features-list">
-                {service.features.map((feature, idx) => (
-                  <li key={idx}>
-                    <CheckCircle size={16} color="#FF3300" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="tech-stack">
-                {service.tech.map((techItem, idx) => (
-                  <span key={idx} style={{ marginRight: "12px" }}>
-                    {techItem}
-                  </span>
-                ))}
-              </div>
-
-              <RippleEffect>
-                <Link to="/contact" className="btn-primary">
-                  Discuss Your Project
-                </Link>
-              </RippleEffect>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="flagship-image-wrapper"
-            >
-              <img
-                src={service.image}
-                alt={service.title}
-                className="flagship-image"
-              />
-              <div className="image-overlay-glow"></div>
-            </motion.div>
-          </div>
-        ))}
-      </section>
-
-      {/* ================= SECONDARY ================= */}
-
-      <section className="secondary-services container">
-        <div className="services-grid">
+        
+        <div className="services-bento-grid">
           {secondaryServices.map((service, index) => (
-            <InteractiveCard
+            <motion.div
               key={index}
-              className="service-card-premium"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              className={`bento-card-glass bento-card-${index}`}
             >
-              <service.icon className="service-icon-glow" size={40} />
+              <InteractiveCard className="bento-inner">
+                <div className="bento-icon-wrapper">
+                  <service.icon className="bento-icon" size={32} />
+                </div>
 
-              <h3>{service.title}</h3>
+                <h3>{service.title}</h3>
+                <p>{service.desc}</p>
 
-              <p>{service.desc}</p>
-
-              <ul style={{ marginTop: "1rem", fontSize: "0.85rem", color: "#aaa" }}>
-                {service.points.map((point, idx) => (
-                  <li key={idx} style={{ marginBottom: "6px" }}>
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </InteractiveCard>
+                <ul className="bento-features">
+                  {service.points.map((point, idx) => (
+                    <li key={idx}>
+                      <span className="dot"></span>
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </InteractiveCard>
+            </motion.div>
           ))}
         </div>
       </section>
@@ -233,7 +220,10 @@ const Services = () => {
       {/* ================= PROCESS ================= */}
 
       <section className="process-preview container">
-        <h2>How We Engineer Scalable Systems</h2>
+        <div className="section-header-centered">
+          <span className="badge" style={{ marginBottom: "1rem" }}><span className="badge-dot" />Methodology</span>
+          <h2>How We Engineer Scalable Systems</h2>
+        </div>
 
         <div className="process-steps">
           {[
@@ -269,70 +259,44 @@ const Services = () => {
         </div>
       </section>
 
-      {/* ================= CTA ================= */}
-
-      <section className="final-cta">
-        <h2>Ready to Build Something Scalable?</h2>
-        <p>
-          Schedule a consultation and get a clear technical roadmap for your
-          next digital system.
-        </p>
-
-        <RippleEffect>
-          <Link to="/contact" className="btn-primary">
-            Get Strategy Call
-          </Link>
-        </RippleEffect>
-      </section>
 
       <section className="faq-section container">
-        <div className="faq-container-grid">
-          <div className="faq-sidebar">
-            <span className="badge">Knowledge Base</span>
-            <h2>Frequently Asked Questions</h2>
-            <p>Everything you need to know about our technical processes and how we deliver elite results.</p>
-            <RippleEffect>
-              <Link to="/contact" className="btn-secondary faq-cta">
-                Discuss with Engineers
-              </Link>
-            </RippleEffect>
+        <motion.div
+          className="faq-header"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <span className="badge"><span className="badge-dot" />Knowledge Base</span>
+          <h2>Questions &amp; Answers</h2>
+          <p>Everything you need to know about our engineering process, security standards, and how we deliver results.</p>
+        </motion.div>
+
+        <div className="faq-grid">
+          <div className="faq-accordion-column">
+            {faqs.map((faq, idx) => (
+              <FAQItem key={idx} faq={faq} idx={idx} />
+            ))}
           </div>
 
-          <div className="faq-accordion-column">
-            {faqs.map((faq, idx) => {
-              const [isExpanded, setIsExpanded] = React.useState(false);
-              return (
-                <motion.div
-                  key={idx}
-                  className={`faq-card ${isExpanded ? 'active' : ''}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                >
-                  <button
-                    className="faq-question"
-                    onClick={() => setIsExpanded(!isExpanded)}
-                  >
-                    <span>{faq.q}</span>
-                    {isExpanded ? <Minus size={20} /> : <Plus size={20} />}
-                  </button>
-                  <AnimatePresence>
-                    {isExpanded && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        className="faq-answer"
-                      >
-                        <p>{faq.a}</p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              );
-            })}
-          </div>
+          <motion.div
+            className="faq-cta-card"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+          >
+            <div className="faq-cta-inner">
+              <div className="faq-cta-icon">?</div>
+              <h3>Still have questions?</h3>
+              <p>Talk directly with our engineering team. We'll map out a technical roadmap tailored to your needs.</p>
+              <RippleEffect>
+                <Link to="/contact" className="btn-primary faq-cta-btn">
+                  Schedule a Call
+                </Link>
+              </RippleEffect>
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useRef, useEffect, useCallback } from 'react';
 import RippleEffect from './RippleEffect';
 
 const projects = [
@@ -31,43 +32,93 @@ const projects = [
 ];
 
 const ProjectPortfolio = () => {
+    const carouselRef = useRef(null);
+
+    const scroll = useCallback((direction) => {
+        if (carouselRef.current) {
+            const { current } = carouselRef;
+            // Calculate scroll amount based on slightly more than one card for better UX
+            const scrollAmount = current.clientWidth > 768 ? 540 : 340;
+            
+            current.scrollBy({ 
+                left: direction === 'left' ? -scrollAmount : scrollAmount, 
+                behavior: 'smooth' 
+            });
+        }
+    }, []);
+
+    // Auto-advance functionality
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (carouselRef.current) {
+                const { current } = carouselRef;
+                const maxScrollLeft = current.scrollWidth - current.clientWidth;
+                
+                // If we are at the end, jump back to start
+                if (current.scrollLeft >= maxScrollLeft - 10) {
+                    current.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    current.scrollBy({ left: current.clientWidth > 768 ? 540 : 340, behavior: 'smooth' });
+                }
+            }
+        }, 4000); // 4 Seconds per slide
+        
+        return () => clearInterval(interval);
+    }, []);
+
     return (
-        <section className="portfolio-section container">
+        <section className="portfolio-section container" style={{ position: 'relative' }}>
             <div className="section-header">
-                <span className="badge">Our Expertise</span>
+                <span className="badge"><span className="badge-dot" />Our Expertise</span>
                 <h2>Featured Case Studies</h2>
                 <p>Explore how we've helped industry leaders redefine their digital landscape.</p>
             </div>
 
-            <div className="portfolio-grid">
-                {projects.map((project, idx) => (
-                    <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.1 }}
-                        className="project-card"
-                    >
-                        <div className="project-image-container">
-                            <img src={project.image} alt={project.title} className="project-image" />
-                            <div className="project-overlay">
-                                <div className="project-links">
-                                    <RippleEffect>
-                                        <Link to="/contact" className="icon-btn"><ExternalLink size={20} /></Link>
-                                    </RippleEffect>
-                                    <RippleEffect>
-                                        <Link to="/contact" className="icon-btn"><Github size={20} /></Link>
-                                    </RippleEffect>
+            <div className="carousel-top-controls">
+                <button className="carousel-arrow" onClick={() => scroll('left')} aria-label="Previous Project">
+                    <ChevronLeft size={24} />
+                </button>
+                <button className="carousel-arrow" onClick={() => scroll('right')} aria-label="Next Project">
+                    <ChevronRight size={24} />
+                </button>
+            </div>
+
+            <div className="carousel-wrapper">
+                <div 
+                    className="carousel-container" 
+                    ref={carouselRef}
+                >
+                    <div className="inner-carousel">
+                        {projects.map((project, idx) => (
+                            <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: idx * 0.1, duration: 0.5 }}
+                            className="project-card"
+                        >
+                            <div className="project-image-container">
+                                <img src={project.image} alt={project.title} className="project-image" />
+                                <div className="project-overlay">
+                                    <div className="project-links">
+                                        <RippleEffect>
+                                            <Link to="/contact" className="icon-btn"><ExternalLink size={20} /></Link>
+                                        </RippleEffect>
+                                        <RippleEffect>
+                                            <Link to="/contact" className="icon-btn"><Github size={20} /></Link>
+                                        </RippleEffect>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="project-info">
-                            <span className="project-category">{project.category}</span>
-                            <h3>{project.title}</h3>
-                        </div>
-                    </motion.div>
-                ))}
+                            <div className="project-info">
+                                <span className="project-category">{project.category}</span>
+                                <h3>{project.title}</h3>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
             </div>
         </section>
     );

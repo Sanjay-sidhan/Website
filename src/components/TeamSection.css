@@ -1,87 +1,336 @@
 .team-section {
-    padding: 2.5rem 0;
+    padding: 0 0 2.5rem 0;
 }
 
-.team-grid {
+.ceo-showcase-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 3rem;
+    grid-template-columns: 320px 1fr;
+    gap: 2.5rem;
+    align-items: stretch;
 }
 
-.team-card {
-    padding: 2.5rem;
-    border-radius: 32px;
-    text-align: center;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.team-card:hover {
-    transform: translateY(-15px);
-    border-color: var(--primary);
-}
-
-.team-image-wrapper {
-    width: 150px;
-    height: 150px;
-    margin: 0 auto 2rem;
+/* ══════════════════════════════════════
+   PROFILE CARD  (inspired by reference)
+══════════════════════════════════════ */
+.profile-card {
     position: relative;
-    border-radius: 50%;
+    border-radius: 28px;
     overflow: hidden;
-    padding: 4px;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    cursor: default;
 }
 
-.team-image {
+.profile-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.55);
+}
+
+/* Full bleed background */
+.profile-bg-img {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.profile-bg-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid var(--bg-primary);
+    object-position: center top;
+    display: block;
+    transition: transform 0.5s ease;
 }
 
-.team-socials {
+.profile-card:hover .profile-bg-img img {
+    transform: scale(1.05);
+}
+
+/* Dark vignette — subtle at top, heavy at bottom */
+.profile-card::before {
+    content: "";
     position: absolute;
-    bottom: -100%;
-    left: 0;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.38) 0%,
+        rgba(0, 0, 0, 0.05) 40%,
+        rgba(0, 0, 0, 0.05) 55%,
+        rgba(0, 0, 0, 0.72) 100%
+    );
+}
+
+/* ── Top section: name + status ── */
+.profile-top {
+    position: relative;
+    z-index: 2;
+    padding: 1.5rem 1.6rem 0;
+    text-align: center;
+}
+
+.profile-card-name {
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    margin: 0 0 0.55rem;
+    line-height: 1.15;
+}
+
+.profile-connecting {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.03em;
+}
+
+/* Spinning loader icon */
+.profile-spinner {
+    animation: spin 2.5s linear infinite;
+    color: #22c55e;
+    flex-shrink: 0;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ── Bottom section: avatar + CTA ── */
+.profile-bottom {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem 1.4rem;
+}
+
+.profile-bottom-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
     width: 100%;
-    background: rgba(10, 10, 10, 0.8);
-    backdrop-filter: blur(5px);
+}
+
+.profile-avatar-mini {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    flex-shrink: 0;
+}
+
+.profile-avatar-mini img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.profile-bottom-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    min-width: 0;
+}
+
+.profile-handle {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.profile-time {
+    font-size: 0.68rem;
+    color: rgba(255, 255, 255, 0.6);
+    white-space: nowrap;
+}
+
+/* Inline socials inside bottom info */
+.profile-bottom-socials {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    padding: 0.75rem 0;
-    transition: bottom 0.3s ease;
+    gap: 0.4rem;
+    margin-top: 0.45rem;
 }
 
-.team-card:hover .team-socials {
-    bottom: 0;
+.profile-bottom-social-btn {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.2s ease;
 }
 
-.team-socials a {
-    color: white;
-    transition: color 0.3s ease;
+.profile-bottom-social-btn:hover {
+    background: rgba(255, 77, 0, 0.35);
+    border-color: rgba(255, 77, 0, 0.5);
+    color: #ff7a3d;
 }
 
-.team-socials a:hover {
-    color: var(--primary);
-}
-
-.team-content h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.team-role {
-    color: var(--primary);
-    font-size: 0.9rem;
+/* CTA pill button */
+.profile-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255, 255, 255, 0.92);
+    color: #111;
+    padding: 9px 18px;
+    border-radius: 20px;
+    font-size: 0.78rem;
     font-weight: 700;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 1.5rem;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 
-.team-bio {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
+.profile-cta-btn:hover {
+    background: #fff;
+    transform: scale(1.04);
+}
+
+/* ══════════════════════════════════════
+   CEO MESSAGE PANEL
+══════════════════════════════════════ */
+.ceo-message-panel {
+    padding: 3.5rem 4rem;
+    border-radius: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.ceo-message-panel::before {
+    content: "";
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 77, 0, 0.06), transparent 70%);
+    pointer-events: none;
+}
+
+.message-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.message-quote-icon {
+    color: var(--primary);
+    opacity: 0.85;
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.message-header h3 {
+    font-size: 1.7rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.25;
+}
+
+.message-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.message-highlight {
+    font-size: 1.15rem;
+    font-weight: 600;
     line-height: 1.6;
+    color: var(--text-primary);
+    border-left: 3px solid var(--primary);
+    padding-left: 1.4rem;
+    font-style: italic;
+}
+
+.message-content p:not(.message-highlight) {
+    color: var(--text-secondary);
+    line-height: 1.75;
+    font-size: 0.94rem;
+}
+
+.message-signature {
+    margin-top: 2.5rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.message-signature strong {
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+.message-signature span {
+    font-size: 0.76rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    font-weight: 600;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media (max-width: 960px) {
+    .ceo-showcase-container {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-card {
+        max-width: 360px;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .ceo-message-panel {
+        padding: 2.5rem 2rem;
+    }
+
+    .message-header h3 {
+        font-size: 1.4rem;
+    }
+
+    .message-highlight {
+        font-size: 1.05rem;
+    }
 }

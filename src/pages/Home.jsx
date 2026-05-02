@@ -9,7 +9,6 @@ import SEO from '../components/SEO';
 import CinematicTextReveal from '../components/CinematicTextReveal';
 import SolarSkills from '../components/SolarSkills';
 import InteractiveCard from '../components/InteractiveCard';
-import DataStreaks from '../components/DataStreaks';
 import ParallaxSection from '../components/ParallaxSection';
 import RippleEffect from '../components/RippleEffect';
 import './Home.css';
@@ -44,7 +43,6 @@ const Home = () => {
 
             {/* ─── HERO ─────────────────────────────────────────────────────── */}
             <section className="hero-section">
-                <DataStreaks />
 
                 {/* Social sidebar */}
                 <div className="social-sidebar">
@@ -61,8 +59,8 @@ const Home = () => {
                     style={{ opacity: heroOpacity, y: heroY }}
                 >
                     {/* Live badge */}
-                    <motion.div className="hero-live-badge" variants={fadeUp}>
-                        <span className="hero-live-dot" />
+                    <motion.div className="badge" variants={fadeUp}>
+                        <span className="badge-dot" />
                         <span>Visionary Engineering</span>
                     </motion.div>
 
@@ -122,7 +120,10 @@ const Home = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
-                            <span className="badge-pill">Knowledge Hub</span>
+                            <span className="badge">
+                                <span className="badge-dot" />
+                                Knowledge Hub
+                            </span>
                             <h2>Latest Insights</h2>
                             <p>Stay ahead with our analysis of the technology shaping tomorrow's enterprise landscape.</p>
                         </motion.div>
@@ -178,7 +179,7 @@ const Home = () => {
             
             <ParallaxSection offset={40}>
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.95, opacity: 0 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.8, ease: "easeOut" }}

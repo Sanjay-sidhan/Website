@@ -29,242 +29,179 @@
 ====================================== */
 
 .services-hero {
-  min-height: 45vh;
+  min-height: 50vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 5rem 1rem 2rem;
+  padding: 8rem 1rem 4rem;
   position: relative;
   z-index: 1;
 }
 
-.services-header-content h1 {
-  font-size: clamp(2.8rem, 6vw, 4.5rem);
-  font-weight: 900;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
-  color: var(--text-primary);
-}
-
-.services-header-content p {
-  font-size: 1.1rem;
-  max-width: 720px;
-  margin: 0 auto;
-  color: var(--text-secondary);
-  line-height: 1.7;
-}
-
-/* ======================================
-   FLAGSHIP SECTION
-====================================== */
-
-.flagship-container {
-  padding: 1rem 0;
+.services-header-content {
   display: flex;
   flex-direction: column;
-  gap: 8rem;
-  position: relative;
-  z-index: 1;
-}
-
-.flagship-row {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 5rem;
   align-items: center;
-  transition: transform 0.4s ease;
+  gap: 1.5rem;
 }
 
-.flagship-row:hover {
-  transform: translateY(-8px);
+.inline-badge {
+  margin-bottom: 0.5rem;
 }
 
-.flagship-row.reverse {
-  grid-template-columns: 1.2fr 1fr;
-}
-
-.flagship-row.reverse .flagship-text {
-  order: 2;
-}
-
-.flagship-row.reverse .flagship-image-wrapper {
-  order: 1;
-}
-
-/* Badge */
-
-.service-tag {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 6px 14px;
-  border-radius: 20px;
-  background: var(--primary-soft);
-  color: var(--primary);
-  margin-bottom: 1.2rem;
-}
-
-/* Title */
-
-.flagship-text h2 {
-  font-size: 2.6rem;
-  font-weight: 800;
-  margin-bottom: 1.5rem;
+.hero-title-glass {
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 900;
+  line-height: 1.1;
   color: var(--text-primary);
+  letter-spacing: -0.03em;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
 
-/* Description */
-
-.flagship-text p {
-  font-size: 1.05rem;
-  line-height: 1.8;
+.hero-subtitle-glass {
+  font-size: 1.15rem;
+  max-width: 700px;
   color: var(--text-secondary);
-  margin-bottom: 1.5rem;
-}
-
-/* Ideal */
-
-.ideal-for {
-  font-size: 0.95rem;
-  color: #c2c2c2;
-  margin-bottom: 1.5rem;
-}
-
-/* Features */
-
-.service-features-list {
-  list-style: none;
-  padding: 0;
-  margin: 1.5rem 0 2rem;
-}
-
-.service-features-list li {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin-bottom: 0.8rem;
-  font-size: 0.95rem;
-  color: var(--text-primary);
-}
-
-/* Tech Stack */
-
-.tech-stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-bottom: 2rem;
-}
-
-.tech-stack span {
-  font-size: 0.75rem;
-  padding: 6px 12px;
-  border-radius: 20px;
-  background: var(--primary-soft);
-  color: var(--primary);
-  border: 1px solid rgba(255, 77, 0, 0.3);
-  transition: all 0.3s ease;
-}
-
-.tech-stack span:hover {
-  background: var(--primary);
-  color: #000;
-}
-
-/* Image */
-
-.flagship-image-wrapper {
-  position: relative;
-  border-radius: 28px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-}
-
-.flagship-image {
-  width: 100%;
-  height: 480px;
-  object-fit: cover;
-  transition: transform 0.8s ease;
-}
-
-.flagship-image-wrapper:hover .flagship-image {
-  transform: scale(1.08);
-}
-
-.image-overlay-glow {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center,
-      transparent 40%,
-      rgba(255, 77, 0, 0.08));
+  line-height: 1.8;
 }
 
 /* ======================================
    SECONDARY SERVICES
 ====================================== */
 
-.secondary-services {
-  padding: 8rem 1rem 4rem;
+.secondary-services-glass {
+  padding: 6rem 1rem 4rem;
   position: relative;
   z-index: 1;
 }
 
-.services-grid {
+.services-bento-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: minmax(320px, auto);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.service-card-premium {
+/* Bento Spans */
+.bento-card-0 { grid-column: span 2; }
+.bento-card-1 { grid-column: span 2; }
+.bento-card-2 { grid-column: span 2; }
+.bento-card-3 { grid-column: span 3; }
+.bento-card-4 { grid-column: span 3; }
+
+.bento-card-glass {
+  display: flex;
+}
+
+.bento-inner {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0,0,0,0.04) !important;
+  border-radius: 32px;
+  padding: 3rem 2.5rem;
   display: flex;
   flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+}
+
+.bento-inner::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(255,77,0,0.4), transparent 60%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.bento-inner:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(255,77,0,0.08);
+}
+
+.bento-inner:hover::before {
+  opacity: 1;
+}
+
+.bento-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  background: rgba(255, 77, 0, 0.08);
+  display: flex;
   align-items: center;
-  padding: 3rem 2.5rem;
-  border-radius: 24px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  text-align: center;
-  transition: all 0.35s ease;
+  justify-content: center;
+  margin-bottom: 2rem;
+  transition: all 0.4s ease;
 }
 
-.service-card-premium:hover {
-  transform: translateY(-12px);
-  border-color: var(--primary);
-  box-shadow: 0 30px 80px var(--primary-glow);
-}
-
-.service-icon-glow {
+.bento-icon {
   color: var(--primary);
-  margin-bottom: 1.5rem;
-  filter: drop-shadow(0 0 14px var(--primary-glow));
+  filter: drop-shadow(0 0 10px rgba(255,77,0,0.3));
 }
 
-.service-card-premium h3 {
+.bento-inner:hover .bento-icon-wrapper {
+  background: var(--primary);
+  transform: scale(1.05);
+}
+
+.bento-inner:hover .bento-icon {
+  color: #fff;
+  filter: none;
+}
+
+.bento-inner h3 {
   font-size: 1.6rem;
+  font-weight: 800;
   margin-bottom: 1rem;
   color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
-.service-card-premium p {
-  font-size: 0.95rem;
-  line-height: 1.6;
+.bento-inner p {
+  font-size: 1rem;
   color: var(--text-secondary);
+  line-height: 1.7;
+  flex-grow: 1;
 }
 
-.service-card-premium ul {
-  margin-top: 1rem;
+.bento-features {
   list-style: none;
   padding: 0;
+  margin-top: 1.5rem;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  padding-top: 1.5rem;
 }
 
-.service-card-premium ul li {
-  font-size: 0.85rem;
-  color: #aaaaaa;
-  margin-bottom: 6px;
+.bento-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+}
+
+.bento-features .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 8px var(--primary);
 }
 
 /* ======================================
@@ -272,14 +209,14 @@
 ====================================== */
 
 .process-preview {
-  padding: 1rem 0;
+  padding: 2rem 0;
   position: relative;
   z-index: 1;
 }
 
 .process-preview h2 {
   font-size: 2.2rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
   text-align: center;
   color: var(--text-primary);
 }
@@ -495,39 +432,263 @@
 }
 
 /* ======================================
+   FAQ SECTION — PREMIUM REDESIGN
+====================================== */
+
+.faq-section {
+  padding: 3rem 0 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Header ── */
+.faq-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.faq-header h2 {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+}
+
+.faq-header p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ── Grid: Accordion + CTA Card ── */
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* ── Accordion column ── */
+.faq-accordion-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Individual FAQ card ── */
+.faq-card {
+  border-bottom: 1px solid var(--border);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-card:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.faq-card.active {
+  background: rgba(255, 77, 0, 0.02);
+  border-bottom-color: rgba(255, 77, 0, 0.15);
+}
+
+/* ── Question button ── */
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.5rem 0.5rem;
+  text-align: left;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+  padding-left: 1rem;
+}
+
+/* Number badge */
+.faq-num {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--bg-accent);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: all 0.3s ease;
+}
+
+.faq-card.active .faq-num {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(255, 51, 0, 0.25);
+}
+
+/* Question text */
+.faq-q-text {
+  flex: 1;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+/* Toggle icon */
+.faq-toggle {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--bg-accent);
+  color: var(--text-muted);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-toggle.open {
+  background: var(--primary);
+  color: #fff;
+  transform: rotate(180deg);
+  box-shadow: 0 4px 12px rgba(255, 51, 0, 0.2);
+}
+
+/* ── Answer ── */
+.faq-answer {
+  overflow: hidden;
+}
+
+.faq-answer p {
+  padding: 0 0.5rem 1.5rem 3.8rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+/* ── CTA Card ── */
+.faq-cta-card {
+  position: sticky;
+  top: calc(var(--nav-height) + 2rem);
+  border-radius: 24px;
+  background: linear-gradient(145deg, #fafafa, #f0f0f0);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+.faq-cta-inner {
+  padding: 2.5rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.faq-cta-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--primary), #ff6200);
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 800;
+  box-shadow: 0 8px 24px rgba(255, 51, 0, 0.25);
+  margin-bottom: 0.5rem;
+}
+
+.faq-cta-card h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.faq-cta-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.faq-cta-btn {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  padding: 14px 28px;
+  font-size: 0.95rem;
+}
+
+/* ======================================
    RESPONSIVE
 ====================================== */
 
 @media (max-width: 1024px) {
 
-  .flagship-row,
-  .flagship-row.reverse {
+  .flagship-row-glass,
+  .flagship-row-glass.reverse {
     grid-template-columns: 1fr;
     text-align: center;
     gap: 3rem;
   }
 
-  .flagship-row.reverse .flagship-text,
-  .flagship-row.reverse .flagship-image-wrapper {
+  .flagship-row-glass.reverse .flagship-text-glass,
+  .flagship-row-glass.reverse .flagship-image-glass {
     order: unset;
   }
 
-  .service-features-list li {
+  .service-features-glass li {
     justify-content: center;
+  }
+  
+  .tech-stack-glass {
+    justify-content: center;
+  }
+
+  .faq-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .faq-cta-card {
+    position: static;
+    max-width: 440px;
+    margin: 0 auto;
   }
 }
 
+@media (max-width: 900px) {
+  .bento-card-0, .bento-card-1, .bento-card-2 { grid-column: span 3; }
+}
+
 @media (max-width: 768px) {
+  .hero-title-glass { font-size: clamp(2.5rem, 10vw, 3.5rem); }
+  .bento-card-0, .bento-card-1, .bento-card-2, .bento-card-3, .bento-card-4 { grid-column: span 6; }
+
   .services-header-content h1 {
     font-size: 2.4rem;
   }
 
-  .flagship-text h2 {
+  .flagship-text-glass h2 {
     font-size: 1.8rem;
   }
 
-  .flagship-image {
-    height: 350px;
+  .glass-image-inner img {
+    aspect-ratio: auto;
   }
 
   .process-step-card {

@@ -10,7 +10,7 @@ const socialLinks = [
         icon: Github,
         label: 'GitHub',
         href: 'https://github.com/clynero',
-        color: '#fff',
+        color: '#333',
     },
     {
         icon: Linkedin,
@@ -59,7 +59,7 @@ const Contact = () => {
                 keywords="contact IT support, technical consultation, hire engineers"
             />
             <header className="contact-header">
-                <span className="badge">Get in Touch</span>
+                <span className="badge"><span className="badge-dot" />Get in Touch</span>
                 <h1 className="gradient-text">Let's Build the Future</h1>
                 <p>Have a visionary project? Our experts are ready to bring it to life.</p>
             </header>
